@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Inscriptions scolaires",
+        "desc": "École, collège, lycée",
+        "icon": "🏫",
+        "url": "\/inscriptions"
+    },
+    {
+        "title": "Instruction en famille",
+        "desc": "Demande d’autorisation",
+        "icon": "🏠",
+        "url": "https:\/\/www.ac-martinique.fr\/instruction-en-famille-instruction-simple-ou-avec-le-cned-reglemente-122240"
+    },
+    {
+        "title": "Élèves allophones",
+        "desc": "Accueil et accompagnement",
+        "icon": "🌐",
+        "url": "https:\/\/www.ac-martinique.fr\/l-inscription-au-lycee-121458"
+    },
+    {
+        "title": "Bourses et aides financières",
+        "desc": "Aides disponibles",
+        "icon": "💰",
+        "url": "\/bourses"
+    },
+    {
+        "title": "Examens et diplômes",
+        "desc": "Calendriers, modalités",
+        "icon": "🎓",
+        "url": "https:\/\/www.ac-martinique.fr\/examens-et-diplomes-121876"
+    },
+    {
+        "title": "Orientation et affectation",
+        "desc": "Collège, lycée, etc.",
+        "icon": "🧭",
+        "url": "\/orientations"
+    },
+    {
+        "title": "Signalements",
+        "desc": null,
+        "icon": "⚠️",
+        "url": "https:\/\/www.ac-martinique.fr\/lutte-contre-le-harcelement-122146"
+    }
+]

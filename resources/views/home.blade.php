@@ -22,20 +22,12 @@
           Espace tout public
         </div>
         <div class="content-grid">
-          @foreach ([
-            ['title' => 'Inscriptions scolaires', 'desc' => 'École, collège, lycée', 'icon' => '🏫', 'url' => '/inscriptions'],
-            ['title' => 'Instruction en famille', 'desc' => 'Demande d’autorisation', 'icon' => '🏠', 'url' => 'https://www.ac-martinique.fr/instruction-en-famille-instruction-simple-ou-avec-le-cned-reglemente-122240'],
-            ['title' => 'Élèves allophones', 'desc' => 'Accueil et accompagnement', 'icon' => '🌐', 'url' => 'https://www.ac-martinique.fr/l-inscription-au-lycee-121458'],
-            ['title' => 'Bourses et aides financières', 'desc' => 'Aides disponibles', 'icon' => '💰', 'url' => '/bourses'],
-            ['title' => 'Examens et diplômes', 'desc' => 'Calendriers, modalités', 'icon' => '🎓', 'url' => 'https://www.ac-martinique.fr/examens-et-diplomes-121876'],
-            ['title' => 'Orientation et affectation', 'desc' => 'Collège, lycée, etc.', 'icon' => '🧭', 'url' => '/orientations'],
-            ['title' => 'Signalements', 'desc' => '', 'icon' => '⚠️', 'url' => 'https://www.ac-martinique.fr/lutte-contre-le-harcelement-122146'],
-          ] as $item)
-            <a href="{{ $item['url'] }}" class="bloc">
-              <div class="icon">{{ $item['icon'] }}</div>
-              <h3 class="bloc-title">{{ $item['title'] }}</h3>
-              <p class="bloc-desc">{{ $item['desc'] }}</p>
-            </a>
+          @foreach ($buttons as $button)
+              <a href="{{ $button->url }}" class="bloc">
+                  <div class="icon">{{ $button->icon }}</div>
+                  <h3 class="bloc-title">{{ $button->title }}</h3>
+                  <p class="bloc-desc">{{ $button->desc }}</p>
+              </a>
           @endforeach
         </div>
       </div>
@@ -43,11 +35,13 @@
       <!-- Colonne Espace personnels -->
       <div>
         <div class="header-blue">Espace personnels</div>
-        <div class="personnel-box">
-          <div class="icon">👤</div>
-          <h3 class="bloc-title text-center mb-1">Gestion des personnels</h3>
-          <p class="bloc-desc text-center">Accès réservé aux personnels pour les démarches RH, mobilité, carrière, etc.</p>
-        </div>
+        <a href="{{ route('admin.buttons.edit') }}" class="no-underline text-inherit">
+          <div class="personnel-box">
+            <div class="icon">👤</div>
+            <h3 class="bloc-title text-center mb-1">Gestion des personnels</h3>
+            <p class="bloc-desc text-center">Accès réservé aux personnels pour les démarches RH, mobilité, carrière, etc.</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
