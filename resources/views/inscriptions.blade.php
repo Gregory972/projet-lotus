@@ -10,13 +10,9 @@
 <body class="bg-white text-gray-900 font-sans">
     <div class="container mx-auto p-4">
 
-        <!-- Bouton retour -->
-        <a href="/" class="inline-flex items-center text-blue-600 hover:underline mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            Retour
-        </a>
+        <div class="flex items-center mb-6">
+            <a href="/" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">← Retour à l'accueil</a>
+        </div>
 
         <h1 class="text-3xl font-bold text-center mb-1">Inscriptions scolaires</h1>
         <p class="text-center text-gray-600 mb-6">Choisissez le type d'inscription souhaité</p>

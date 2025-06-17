@@ -10,7 +10,7 @@
   <div class="container mx-auto p-6">
 
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold">🎛️ Éditer les boutons</h1>
+      <h1 class="text-2xl font-bold">Éditer les boutons</h1>
       <a href="/" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">← Retour à l'accueil</a>
     </div>
 
@@ -50,7 +50,7 @@
             @if (in_array($urlSection, $sectionsWithSubbuttons))
                 <a href="{{ route('admin.subbuttons.edit', Str::slug($button['title'])) }}"
                     class="inline-block mt-2 text-blue-600 hover:underline font-medium">
-                    🔧 Modifier les sous-boutons
+                    Modifier les sous-boutons
                 </a>
             @endif
 
@@ -58,7 +58,7 @@
         @endforeach
 
 
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      <button type="submit" class="flex justify-center items-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         💾 Enregistrer les modifications
       </button>
     </form>
