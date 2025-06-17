@@ -59,3 +59,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Set-up Project
+- **Télécharger Php (Windows):** https://windows.php.net/download/
+    - Vérification : php -v
+    - Modifier le php --ini (extensions : fileinfo, zip, sqlite3, pdo_sqlite)
+    - Exécuter le backend : php artisan serve
+- **Installer nodejs :** https://nodejs.org
+    - npm install
+    - Vérification : node -v
+    - Exécuter le frontend : npm run dev
+- **Installer Composer :** https://getcomposer.org/Composer-Setup.exe
+    - Vérification : composer --version
+    - Création du projet : composer create-project laravel/laravel lotus-interface
+- Tips : S'assurer du chemin dans les variables environnements
