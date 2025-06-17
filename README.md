@@ -73,4 +73,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - **Installer Composer :** https://getcomposer.org/Composer-Setup.exe
     - Vérification : composer --version
     - Création du projet : composer create-project laravel/laravel lotus-interface
+- **Base de donnée :** php artisan migrate:fresh --seed
 - Tips : S'assurer du chemin dans les variables environnements
