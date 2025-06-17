@@ -10,9 +10,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Pages utilisateur
 Route::get('/inscriptions', [HomeController::class, 'showInscriptions'])->name('inscriptions');
-// Route::get('/orientations', function () {
-//     return view('orientations');
-// });
 
 // Page des bourses
 Route::get('/bourses', [HomeController::class, 'showBourses'])->name('bourses');
