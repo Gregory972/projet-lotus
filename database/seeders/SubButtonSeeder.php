@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\SubButton;
 use App\Models\Button;
+use App\Models\SubButton;
 
 class SubButtonSeeder extends Seeder
 {

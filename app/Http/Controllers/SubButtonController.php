@@ -17,13 +17,17 @@ class SubButtonController extends Controller
     public function update(Request $request, $section)
     {
         $subButtonsData = $request->input('subButtons');
+        // print les données reçues pour débogage
+        // dump($subButtonsData);
 
         if (!is_array($subButtonsData)) {
             return back()->with('error', 'Aucune donnée reçue.');
         }
 
         // Récupérer le bouton parent correspondant à la section
-        $button = Button::where('title', 'LIKE', str_replace('-', ' ', $section))->first();
+        // dump(str_replace('-', ' ', ucfirst($section)));
+        $button = Button::where('section', $section)->first();
+        // dump($button);
 
         if (!$button) {
             return back()->with('error', 'Bouton parent non trouvé pour la section.');
