@@ -27,4 +27,10 @@ class HomeController extends Controller
         $items = SubButton::where('section', 'bourses-et-aides-financieres')->get();
         return view('bourses', compact('items'));
     }
+
+    public function showOrientations()
+    {
+        $items = SubButton::where('section', 'orientation-et-affectation')->get();
+        return view('orientations', compact('items'));
+    }
 }

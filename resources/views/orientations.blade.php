@@ -22,16 +22,12 @@
         <p class="text-center text-gray-600 mb-6">Choisissez le type d'orientation ou affectation souhaité</p>
 
         <div class="content-grid grid-cols-2 gap-4 max-w-screen-md mx-auto">
-            @foreach([
-                ['title' => 'Du collège au lycée', 'desc' => 'Orientation et affectation du collège au lycée', 'icon' => '🏫➡️🎓', 'url' => 'https://www.ac-martinique.fr/orientation-et-affectation-du-college-au-lycee-122729'],
-                ['title' => 'Services d’orientation', 'desc' => 'Accompagnement des élèves et familles', 'icon' => '🧭', 'url' => 'https://www.ac-martinique.fr/les-services-de-l-orientation-122726'],
-                ['title' => 'Parcoursup', 'desc' => 'Accès à l’enseignement supérieur', 'icon' => '🎯', 'url' => 'https://www.ac-martinique.fr/parcoursup-122179'],
-            ] as $item)
-                <a href="{{ $item['url'] }}" class="no-underline text-inherit">
+            @foreach ($items as $item)
+                <a href="{{ $item->url }}" class="no-underline text-inherit">
                     <div class="bloc hover:shadow-lg transition">
-                        <div class="icon">{{ $item['icon'] }}</div>
-                        <h3 class="bloc-title">{{ $item['title'] }}</h3>
-                        <p class="bloc-desc">{{ $item['desc'] }}</p>
+                        <div class="icon">{{ $item->icon ?? '🔗' }}</div>
+                        <h3 class="bloc-title">{{ $item->title }}</h3>
+                        <p class="bloc-desc">{{ $item->desc ?? '' }}</p>
                     </div>
                 </a>
             @endforeach

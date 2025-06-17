@@ -58,6 +58,29 @@ class SubButtonSeeder extends Seeder
                     'url' => 'https://www.education.gouv.fr/les-aides-scolaires-41564',
                 ],
             ],
+            'Orientation et affectation' => [
+                [
+                    'section' => 'orientation-et-affectation',
+                    'title' => 'Du collège au lycée',
+                    'desc' => 'Orientation et affectation du collège au lycée',
+                    'icon' => '🏫➡️🎓',
+                    'url' => 'https://www.ac-martinique.fr/orientation-et-affectation-du-college-au-lycee-122729',
+                ],
+                [
+                    'section' => 'orientation-et-affectation',
+                    'title' => 'Services d’orientation',
+                    'desc' => 'Accompagnement des élèves et familles',
+                    'icon' => '🧭',
+                    'url' => 'https://www.ac-martinique.fr/les-services-de-l-orientation-122726',
+                ],
+                [
+                    'section' => 'orientation-et-affectation',
+                    'title' => 'Parcoursup',
+                    'desc' => 'Accès à l’enseignement supérieur',
+                    'icon' => '🎯',
+                    'url' => 'https://www.ac-martinique.fr/parcoursup-122179',
+                ],
+            ],
             // Tu peux en ajouter d'autres ici : 'Orientation et affectation' => [ ... ]
         ];
 
