@@ -28,6 +28,13 @@
 
       @foreach ($subButtons as $index => $sub)
         <div class="edit-button-card">
+            <form method="POST" action="{{ route('admin.subButtons.destroy', $sub->id) }}" class="edit-buttons-delete-form" onsubmit="return confirm('Supprimer ce sous-bouton ?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="edit-buttons-delete-button" title="Supprimer">
+                    ✕
+                </button>
+            </form>
           <input type="hidden" name="subButtons[{{ $index }}][id]" value="{{ $sub->id }}">
 
           <label class="edit-buttons-label">Titre</label>
@@ -47,6 +54,12 @@
       <button type="submit" class="edit-buttons-submit">
         Enregistrer les modifications
       </button>
+    </form>
+    <form method="POST" action="{{ route('admin.subButtons.create.default', $section) }}" class="add-button-form">
+        @csrf
+        <button type="submit" class="edit-buttons-secondary">
+            ➕ Ajouter un sous-bouton
+        </button>
     </form>
   </div>
 </body>

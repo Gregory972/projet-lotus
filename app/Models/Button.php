@@ -8,6 +8,7 @@ class Button extends Model
 {
     protected $fillable = [
         'title',
+        'section',
         'desc',
         'icon',
         'url',

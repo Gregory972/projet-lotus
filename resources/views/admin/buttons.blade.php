@@ -29,27 +29,34 @@
 
       @foreach ($buttons as $button)
         <div class="edit-button-card">
-          <input type="hidden" name="buttons[{{ $button->id }}][id]" value="{{ $button->id }}">
-
-          <label class="edit-buttons-label">Titre</label>
-          <input type="text" name="buttons[{{ $button->id }}][title]" value="{{ $button->title }}" maxlength="20" class="edit-buttons-input" required>
-
-          <label class="edit-buttons-label">Description</label>
-          <input type="text" name="buttons[{{ $button->id }}][desc]" value="{{ $button->desc }}" class="edit-buttons-input">
-
-          <label class="edit-buttons-label">Icône</label>
-          <input type="text" name="buttons[{{ $button->id }}][icon]" value="{{ $button->icon }}" class="edit-buttons-input" required>
-
-          <label class="edit-buttons-label">URL</label>
-          <input type="text" name="buttons[{{ $button->id }}][url]" value="{{ $button->url }}" class="edit-buttons-input" required>
-
-          @php
+            <form method="POST" action="{{ route('admin.buttons.destroy', $button->id) }}" class="edit-buttons-delete-form" onsubmit="return confirm('Supprimer ce bouton ?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="edit-buttons-delete-button" title="Supprimer">
+                    ✕
+                </button>
+            </form>
+            <input type="hidden" name="buttons[{{ $button->id }}][id]" value="{{ $button->id }}">
+            
+            <label class="edit-buttons-label">Titre</label>
+            <input type="text" name="buttons[{{ $button->id }}][title]" value="{{ $button->title }}" maxlength="20" class="edit-buttons-input" required>
+            
+            <label class="edit-buttons-label">Description</label>
+            <input type="text" name="buttons[{{ $button->id }}][desc]" value="{{ $button->desc }}" class="edit-buttons-input">
+            
+            <label class="edit-buttons-label">Icône</label>
+            <input type="text" name="buttons[{{ $button->id }}][icon]" value="{{ $button->icon }}" class="edit-buttons-input" required>
+            
+            <label class="edit-buttons-label">URL</label>
+            <input type="text" name="buttons[{{ $button->id }}][url]" value="{{ $button->url }}" class="edit-buttons-input" required>
+            
+            @php
             $urlSection = ltrim($button['url'], '/');
-          @endphp
-
-          @if (in_array($urlSection, $sectionsWithSubbuttons))
+            @endphp
+            
+            @if (in_array($urlSection, $sectionsWithSubbuttons))
             <a href="{{ route('admin.subbuttons.edit', Str::slug($button['title'])) }}" class="edit-buttons-subbutton-link">
-              Modifier les sous-boutons
+                Modifier les sous-boutons
             </a>
           @endif
         </div>
@@ -58,6 +65,14 @@
       <button type="submit" class="edit-buttons-submit">
         Enregistrer les modifications
       </button>
+
+      
+    </form>
+    <form method="POST" action="{{ route('admin.buttons.create.default') }}" class="add-button-form">
+        @csrf
+        <button type="submit" class="edit-buttons-secondary">
+            ➕ Ajouter un bouton
+        </button>
     </form>
   </div>
 </body>
