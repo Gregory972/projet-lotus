@@ -13,9 +13,9 @@ Route::get('/inscriptions', [HomeController::class, 'showInscriptions'])->name('
 Route::get('/orientations', function () {
     return view('orientations');
 });
-Route::get('/bourses', function () {
-    return view('bourses');
-});
+
+// Page des bourses
+Route::get('/bourses', [HomeController::class, 'showBourses'])->name('bourses');
 
 // Admin - Boutons principaux
 Route::get('/admin', [AdminController::class, 'edit'])->name('admin.buttons.edit');

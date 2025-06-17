@@ -22,15 +22,12 @@
         <p class="text-center text-gray-600 mb-6">Choisissez le type de bourse ou aide financière souhaité</p>
 
         <div class="content-grid grid-cols-2 gap-4 max-w-screen-md mx-auto">
-            @foreach([
-                ['title' => 'Bourses scolaires', 'desc' => 'Collège et lycée – conditions et démarches', 'icon' => '💶', 'url' => 'https://www.education.gouv.fr/les-bourses-de-college-et-de-lycee-326728'],
-                ['title' => 'Aides scolaires', 'desc' => 'Soutiens financiers divers pour les familles', 'icon' => '🧾', 'url' => 'https://www.education.gouv.fr/les-aides-scolaires-41564'],
-            ] as $item)
-                <a href="{{ $item['url'] }}" class="no-underline text-inherit">
+            @foreach ($items as $item)
+                <a href="{{ $item->url }}" class="no-underline text-inherit">
                     <div class="bloc hover:shadow-lg transition">
-                        <div class="icon">{{ $item['icon'] }}</div>
-                        <h3 class="bloc-title">{{ $item['title'] }}</h3>
-                        <p class="bloc-desc">{{ $item['desc'] }}</p>
+                        <div class="icon">{{ $item->icon ?? '🔗' }}</div>
+                        <h3 class="bloc-title">{{ $item->title }}</h3>
+                        <p class="bloc-desc">{{ $item->desc ?? '' }}</p>
                     </div>
                 </a>
             @endforeach

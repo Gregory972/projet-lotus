@@ -21,4 +21,10 @@ class HomeController extends Controller
 
         return view('inscriptions', compact('items'));
     }
+
+    public function showBourses()
+    {
+        $items = SubButton::where('section', 'bourses-et-aides-financieres')->get();
+        return view('bourses', compact('items'));
+    }
 }
