@@ -75,3 +75,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     - Création du projet : composer create-project laravel/laravel lotus-interface
 - **Base de donnée :** php artisan migrate:fresh --seed
 - Tips : S'assurer du chemin dans les variables environnements
+
+## Lancer le projet en local
+- cloner le repo
+- **1ère console :**
+    - composer install
+    - php artisan serve
+- **2ème console :**
+    - npm install
+    - npm run dev
+- **3ème console (si nécéssaire) :**
+    - php artisan migrate
