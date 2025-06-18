@@ -17,15 +17,12 @@ class SubButtonController extends Controller
     public function update(Request $request, $section)
     {
         $subButtonsData = $request->input('subButtons');
-        // print les données reçues pour débogage
         // dump($subButtonsData);
 
         if (!is_array($subButtonsData)) {
             return back()->with('error', 'Aucune donnée reçue.');
         }
 
-        // Récupérer le bouton parent correspondant à la section
-        // dump(str_replace('-', ' ', ucfirst($section)));
         $button = Button::where('section', $section)->first();
         // dump($button);
 
@@ -33,21 +30,41 @@ class SubButtonController extends Controller
             return back()->with('error', 'Bouton parent non trouvé pour la section.');
         }
 
-        // Supprimer les anciens sous-boutons liés à ce bouton
-        $button->subButtons()->delete();
+        $existingIds = [];
 
         foreach ($subButtonsData as $data) {
-            $button->subButtons()->create([
-                'section' => $section,
-                'title' => $data['title'] ?? '',
-                'desc' => $data['desc'] ?? null,
-                'icon' => $data['icon'] ?? '',
-                'url' => $data['url'] ?? '',
-            ]);
+            // Si on a un id, on met à jour
+            if (!empty($data['id'])) {
+                $subButton = SubButton::find($data['id']);
+                if ($subButton) {
+                    $subButton->update([
+                        'title' => $data['title'] ?? '',
+                        'desc' => $data['desc'] ?? null,
+                        'icon' => $data['icon'] ?? '',
+                        'url' => $data['url'] ?? '',
+                        'section' => $section,
+                    ]);
+                    $existingIds[] = $subButton->id;
+                }
+            } else {
+                // Sinon, on en crée un nouveau
+                $new = $button->subButtons()->create([
+                    'title' => $data['title'] ?? '',
+                    'desc' => $data['desc'] ?? null,
+                    'icon' => $data['icon'] ?? '',
+                    'url' => $data['url'] ?? '',
+                    'section' => $section,
+                ]);
+                $existingIds[] = $new->id;
+            }
         }
+
+        // Supprimer les sous-boutons qui ne sont plus dans la liste
+        // $button->subButtons()->whereNotIn('id', $existingIds)->delete();
 
         return redirect()->route('admin.subbuttons.edit', $section)
             ->with('success', 'Sous-boutons mis à jour avec succès.');
     }
+
 
 }

@@ -4,18 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SubButtonController;
+use App\Http\Controllers\PublicPageController;
 
 // Page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Pages utilisateur
-Route::get('/inscriptions', [HomeController::class, 'showInscriptions'])->name('inscriptions');
+// // Pages utilisateur
+// Route::get('/inscriptions', [HomeController::class, 'showInscriptions'])->name('inscriptions');
 
-// Page des bourses
-Route::get('/bourses', [HomeController::class, 'showBourses'])->name('bourses');
+// // Page des bourses
+// Route::get('/bourses', [HomeController::class, 'showBourses'])->name('bourses');
 
-// Page des orientations
-Route::get('/orientations', [HomeController::class, 'showOrientations'])->name('orientations');
+// // Page des orientations
+// Route::get('/orientations', [HomeController::class, 'showOrientations'])->name('orientations');
 
 // Admin - Boutons principaux
 Route::get('/admin', [AdminController::class, 'edit'])->name('admin.buttons.edit');
@@ -40,3 +41,6 @@ Route::post('/admin/subButtons/create-default/{section}', [AdminController::clas
 // Admin - Suppression d'un sous-bouton
 Route::get('/admin/subButtons/{id}', [AdminController::class, 'destroySub'])->name('admin.subButtons.destroy');
 Route::delete('/admin/subButtons/{id}', [AdminController::class, 'destroySub'])->name('admin.subButtons.destroy');
+
+// Pages publiques
+Route::get('/{slug}', [PublicPageController::class, 'show'])->where('slug', '^[a-z0-9\-]+$');

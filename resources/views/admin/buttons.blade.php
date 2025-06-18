@@ -22,12 +22,15 @@
       </div>
     @endif
 
-    @php
-      $sectionsWithSubbuttons = ['inscriptions', 'orientations', 'bourses'];
-    @endphp
-
     <!-- Affichage des boutons -->
     @foreach ($buttons as $button)
+
+    @php
+      $isInternal = Str::startsWith($button->url, '/');
+    @endphp
+
+
+
       <div class="edit-button-card">
 
         <!-- Formulaire de suppression -->
@@ -57,13 +60,9 @@
           <label class="edit-buttons-label">URL</label>
           <input type="text" name="buttons[{{ $button->id }}][url]" value="{{ $button->url }}" class="edit-buttons-input" required>
 
-          @php
-            $urlSection = ltrim($button['url'], '/');
-          @endphp
 
-
-          @if (in_array($urlSection, $sectionsWithSubbuttons))
-            <a href="{{ route('admin.subbuttons.edit', Str::slug($button['title'])) }}" class="edit-buttons-subbutton-link">
+          @if ($isInternal)
+            <a href="{{ route('admin.subbuttons.edit', Str::slug($button->title)) }}" class="edit-buttons-subbutton-link">
               Modifier les sous-boutons
             </a>
           @endif

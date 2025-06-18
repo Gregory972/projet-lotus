@@ -7,12 +7,24 @@ use Illuminate\Support\Facades\File;
 use App\Models\Button;
 use App\Models\SubButton;
 
+use Illuminate\Support\Str;
+
 class AdminController extends Controller
 {
     public function edit()
     {
         $buttons = Button::all();
-        return view('admin.buttons', compact('buttons'));
+
+        // Récupère dynamiquement les sections ayant des sous-boutons
+        $sectionsWithSubbuttons = SubButton::select('section')
+            ->distinct()
+            ->pluck('section')
+            ->map(function ($section) {
+                return Str::slug($section); // ou juste $section si déjà propre
+            })
+            ->toArray();
+
+        return view('admin.buttons', compact('buttons', 'sectionsWithSubbuttons'));
     }
 
     public function update(Request $request)
@@ -26,12 +38,34 @@ class AdminController extends Controller
         ]);
 
         foreach ($validated['buttons'] as $index => $data) {
-            // Si le bouton existe, on le met à jour, sinon on l’ignore
-            Button::find($index)?->update($data);
+            $button = Button::find($index);
+
+            if ($button) {
+                // Ancienne section
+                $oldSection = $button->section;
+
+                // Nouvelle section basée sur le nouveau titre
+                $newSection = Str::slug($data['title']);
+
+                // Mise à jour du bouton
+                $button->update([
+                    'title' => $data['title'],
+                    'desc' => $data['desc'],
+                    'icon' => $data['icon'],
+                    'url'   => $data['url'],
+                    'section' => $newSection,
+                ]);
+
+                // Mise à jour des sous-boutons associés
+                SubButton::where('button_id', $button->id)->update([
+                    'section' => $newSection
+                ]);
+            }
         }
 
         return redirect()->route('admin.buttons.edit')->with('success', 'Mise à jour réussie !');
     }
+
 
     public function createDefaultButton()
     {
@@ -48,8 +82,15 @@ class AdminController extends Controller
 
     public function createDefaultSubButton($section)
     {
+
+        $button = Button::where('section', $section)->first();
+
+        if (!$button) {
+        return redirect()->back()->with('error', 'Aucun bouton correspondant à cette section.');
+        }
+
         SubButton::create([
-            'button_id' => Button::where('section', $section)->first()->id,
+            'button_id' => $button->id,
             'title' => 'Nouveau sous-bouton',
             'section' => $section,
             'desc' => 'Description par défaut',
