@@ -4,12 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    @if(app()->environment('production'))
-        <link rel="stylesheet" href="{{ asset('build/assets/app-ClxS7F0g.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/style-l9stogQ8.css') }}">
-    @else
-        @vite(['resources/css/app.css', 'resources/css/style.css'])
-    @endif
+    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/css/edit.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white text-gray-900 font-sans">
     <div class="container mx-auto p-4">

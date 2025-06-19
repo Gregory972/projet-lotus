@@ -3,12 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Administration - Modifier les sous-boutons</title>
-    @if(app()->environment('production'))
-        <link rel="stylesheet" href="{{ asset('build/assets/app-ClxS7F0g.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/edit-B5HVm9Qo.css') }}">
-    @else
-        @vite(['resources/css/app.css', 'resources/css/edit.css'])
-    @endif
+  @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/css/edit.css', 'resources/js/app.js'])
 </head>
 <body class="edit-buttons-body">
   <div class="edit-buttons-container">
