@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>Mes démarches</title>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body>
   <div class="page-wrapper">
-    <div class="bg-primary text-white p-4 rounded-lg shadow-lg text-center">
+    <div class="bg-primary text-black p-4 rounded-lg shadow-lg text-center">
         Tailwind fonctionne proprement 🎉
     </div>
 
