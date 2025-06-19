@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Administration - Modifier les sous-boutons</title>
-  @vite('resources/css/app.css')
-  @vite('resources/css/edit.css')
+  @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/css/edit.css', 'resources/js/app.js'])
 </head>
 <body class="edit-buttons-body">
   <div class="edit-buttons-container">

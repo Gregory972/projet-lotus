@@ -1,6 +1,6 @@
 FROM php:8.2-cli
 
-# Installer les extensions nécessaires à Laravel
+# Installer les dépendances système nécessaires à Laravel + Node
 RUN apt-get update && \
     apt-get install -y unzip zip git curl libzip-dev \
     nodejs npm && \
@@ -9,26 +9,29 @@ RUN apt-get update && \
 # Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Définir le dossier de travail
+# Définir le répertoire de travail
 WORKDIR /var/www
 
-# Copier tous les fichiers du projet
+# Copier tous les fichiers
 COPY . .
 
 # Installer les dépendances PHP
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Installer les dépendances Node.js pour Vite
+# Installer les dépendances JS pour Vite
 RUN npm install
 
-# Builder les assets Vite (génère public/build/manifest.json)
+# Compiler les assets avec Vite
 RUN npm run build
 
-# Donner les bons droits à Laravel
+# Effacer le cache de config Laravel (évite erreur manifest manquant)
+RUN php artisan config:clear
+
+# Donner les bons droits d'accès
 RUN chmod -R 775 storage bootstrap/cache
 
-# Exposer le port attendu par Render
+# Exposer le port utilisé par Laravel
 EXPOSE 8080
 
-# Lancer Laravel via le serveur intégré
+# Commande de démarrage
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]

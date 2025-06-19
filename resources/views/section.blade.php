@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    @vite('resources/css/app.css')
-    @vite('resources/css/style.css')
+    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/css/edit.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white text-gray-900 font-sans">
     <div class="container mx-auto p-4">
