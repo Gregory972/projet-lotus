@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Mes démarches</title>
-  @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/css/edit.css', 'resources/js/app.js'])
+  @vite('resources/css/app.css')
+  @vite('resources/css/style.css')
 </head>
 <body>
   <div class="page-wrapper">
-    <div class="bg-red-500 text-white p-4 text-center rounded-lg shadow-md">
-        Tailwind fonctionne 🎉
-    </div>
-
     <h1 class="page-title">Mes démarches</h1>
     <p class="page-subtitle">Accédez aux services administratifs en quelques clics</p>
 
