@@ -8,6 +8,10 @@
 </head>
 <body>
   <div class="page-wrapper">
+    <div class="bg-primary text-white p-4 rounded-lg shadow-lg text-center">
+        Tailwind fonctionne proprement 🎉
+    </div>
+
     <h1 class="page-title">Mes démarches</h1>
     <p class="page-subtitle">Accédez aux services administratifs en quelques clics</p>
 
