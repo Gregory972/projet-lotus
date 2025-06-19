@@ -1,38 +1,44 @@
-FROM php:8.2-cli
+FROM node:20 as build
 
-# Installer les dépendances système nécessaires à Laravel + Node
-RUN apt-get update && \
-    apt-get install -y unzip zip git curl libzip-dev nodejs npm && \
-    docker-php-ext-install zip pdo pdo_mysql
+WORKDIR /app
 
-# Installer Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Définir le répertoire de travail
-WORKDIR /var/www
-
-# Copier les fichiers du projet
-COPY . .
-
-# Installer les dépendances PHP
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Installer les dépendances JS pour Vite
+COPY package.json package-lock.json ./
 RUN npm install
 
-# Compiler les assets avec Vite (le build génère public/build)
+COPY . .
+
+# Compile Vite (avec style.css importé dans app.css)
 RUN npm run build
 
-# Nettoyer les caches Laravel
+
+FROM php:8.2-cli
+
+# Dépendances système
+RUN apt-get update && apt-get install -y unzip zip git curl libzip-dev && \
+    docker-php-ext-install zip pdo pdo_mysql
+
+# Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Dossier de travail
+WORKDIR /var/www
+
+# Copie code source
+COPY . .
+
+# Copie le build Vite compilé dans le public
+COPY --from=build /app/public/build /var/www/public/build
+
+# Install PHP deps après le frontend (évite conflits de lock)
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Artisan clean
 RUN php artisan config:clear && \
     php artisan view:clear && \
     php artisan route:clear
 
-# Donner les bons droits d'accès
+# Droits
 RUN chmod -R 775 storage bootstrap/cache
 
-# Exposer le port utilisé par Laravel
 EXPOSE 8080
-
-# Commande de démarrage
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
