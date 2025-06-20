@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Mes démarches</title>
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+  <link rel="stylesheet" href="{{ asset('build/assets/app-CaP4jrzr.css') }}">
+  <script type="module" src="{{ asset('build/assets/app-nmLljNp0.js') }}"></script>
 </head>
 <body>
   <div class="page-wrapper">
-    <div class="bg-primary text-black p-4 rounded-lg shadow-lg text-center">
-        Tailwind fonctionne proprement 🎉
-    </div>
 
     <h1 class="page-title">Mes démarches</h1>
     <p class="page-subtitle">Accédez aux services administratifs en quelques clics</p>

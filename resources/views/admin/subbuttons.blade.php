@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Administration - Modifier les sous-boutons</title>
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <link rel="stylesheet" href="{{ asset('build/assets/app-CaP4jrzr.css') }}">
+  <script type="module" src="{{ asset('build/assets/app-nmLljNp0.js') }}"></script>
 </head>
 <body class="edit-buttons-body">
   <div class="edit-buttons-container">
