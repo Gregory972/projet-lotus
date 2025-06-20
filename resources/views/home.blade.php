@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Mes démarches</title>
-  <link rel="stylesheet" href="../../public/build/assets/app-CaP4jrzr.css">
-  <script type="module" src="../../public/build/assets/app-nmLljNp0.js"></script>
+  <link rel="stylesheet" href="public/build/assets/app-CaP4jrzr.css">
+  <script type="module" src="public/build/assets/app-nmLljNp0.js"></script>
 </head>
 <body>
   <div class="page-wrapper">
