@@ -1,12 +1,17 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-B0NpVnpS.css",
+    "file": "assets/app-BKhvmvUM.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/edit.css": {
     "file": "assets/edit-B5HVm9Qo.css",
     "src": "resources/css/edit.css",
+    "isEntry": true
+  },
+  "resources/css/password.css": {
+    "file": "assets/password-CP8edu3l.css",
+    "src": "resources/css/password.css",
     "isEntry": true
   },
   "resources/css/style.css": {
