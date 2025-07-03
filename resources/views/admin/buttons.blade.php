@@ -56,7 +56,48 @@
           <input type="text" name="buttons[{{ $button->id }}][desc]" value="{{ $button->desc }}" class="edit-buttons-input">
 
           <label class="edit-buttons-label">Icône</label>
-          <input type="text" name="buttons[{{ $button->id }}][icon]" value="{{ $button->icon }}" class="edit-buttons-input" required>
+          <!-- Aperçu de l'icône -->
+          <div id="icon-preview-{{ $button->id }}" class="mb-2" style="font-size: 24px;">
+              @php
+                  $isImage = Str::startsWith($button->icon, ['http://', 'https://']);
+              @endphp
+
+              @if ($isImage)
+                  <img src="{{ $button->icon }}" alt="Icône" style="height: 32px; width: auto;">
+              @else
+                  {{ $button->icon }}
+              @endif
+          </div>
+
+          <!-- Champ de saisie -->
+          <input type="text"
+                name="buttons[{{ $button->id }}][icon]"
+                value="{{ $button->icon }}"
+                class="edit-buttons-input"
+                placeholder="🔒 ou https://image.png"
+                oninput="updateIconPreview{{ $button->id }}(this.value)"
+                required>
+
+          <!-- Script JS -->
+          <script>
+              function updateIconPreview{{ $button->id }}(value) {
+                  const preview = document.getElementById('icon-preview-{{ $button->id }}');
+                  preview.innerHTML = '';
+
+                  if (value.startsWith('http://') || value.startsWith('https://')) {
+                      const img = document.createElement('img');
+                      img.src = value;
+                      img.style.height = '32px';
+                      img.style.width = 'auto';
+                      img.alt = 'Icône';
+                      preview.appendChild(img);
+                  } else {
+                      preview.textContent = value;
+                  }
+              }
+          </script>
+
+
 
           <label class="edit-buttons-label">URL</label>
           <input type="text" name="buttons[{{ $button->id }}][url]" value="{{ $button->url }}" class="edit-buttons-input" required>

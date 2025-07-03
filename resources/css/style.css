@@ -164,3 +164,14 @@ html, body {
   background-color: #f3f4f6;
   transform: scale(1.01);
 }
+
+.icon img {
+  display: block;
+  max-height: 40px;
+  margin: 0 auto;
+}
+.icon {
+  text-align: center;
+  font-size: 30px;
+  line-height: 1;
+}

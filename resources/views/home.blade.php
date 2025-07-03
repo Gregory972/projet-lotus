@@ -24,7 +24,17 @@
         <div class="content-grid">
           @foreach ($buttons as $button)
               <a href="{{ $button->url }}" class="bloc">
-                  <div class="icon">{{ $button->icon }}</div>
+                  @php
+                      $isImage = Str::startsWith($button->icon, ['http://', 'https://']);
+                  @endphp
+
+                  <div class="icon">
+                      @if ($isImage)
+                          <img src="{{ $button->icon }}" alt="Icône {{ $button->title }}" style="height: 40px; width: auto;">
+                      @else
+                          {{ $button->icon }}
+                      @endif
+                  </div>
                   <h3 class="bloc-title">{{ $button->title }}</h3>
                   <p class="bloc-desc">{{ $button->desc }}</p>
               </a>
