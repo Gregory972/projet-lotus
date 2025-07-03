@@ -13,6 +13,7 @@
     <div class="edit-buttons-header">
       <h1 class="edit-buttons-title">Éditer les boutons</h1>
       <a href="/" class="edit-buttons-back">← Retour à l'accueil</a>
+
     </div>
 
     <!-- Message de succès -->

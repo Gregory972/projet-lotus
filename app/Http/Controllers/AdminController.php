@@ -80,7 +80,7 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Un nouveau bouton a été ajouté avec des valeurs par défaut.');
     }
 
-    public function createDefaultSubButton($section)
+    public function createDefaultSubButton(Request $request, $section)
     {
 
         $button = Button::where('section', $section)->first();
@@ -109,7 +109,7 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Le bouton a été supprimé avec succès.');
     }
 
-    public function destroySub($id)
+    public function destroySub(Request $request, $id)
     {
         $button = SubButton::findOrFail($id);
         $button->delete();

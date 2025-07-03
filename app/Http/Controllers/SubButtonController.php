@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SubButtonController extends Controller
 {
-    public function edit($section)
+    public function edit(Request $request, $section)
     {
         $subButtons = SubButton::where('section', $section)->get();
         return view('admin.subbuttons', compact('subButtons', 'section'));
