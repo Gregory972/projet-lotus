@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion sécurisée</title>
     @vite('resources/css/app.css')
     @vite('resources/css/style.css')
+    @vite('resources/css/password.css')
 </head>
 <body>
-<div class="page-wrapper">
-    <h2 class="page-title">Espace réservé</h2>
-    <p class="page-subtitle">Veuillez entrer le mot de passe</p>
+<div class="login-card">
+        <h2>🔐 Espace réservé</h2>
+        <p>Veuillez entrer le mot de passe pour continuer</p>
 
-    <form method="POST" action="{{ route('password.check') }}" class="form-box">
-        @csrf
-        <input type="password" name="password" placeholder="Mot de passe" class="input-password" required>
-        <button type="submit" class="btn">Valider</button>
-    </form>
+        <form method="POST" action="{{ route('password.check') }}">
+            @csrf
+            <input type="password" name="password" placeholder="Mot de passe = demo123" class="input-password" required>
 
-    @if($errors->any())
-        <p class="error-message">{{ $errors->first('password') }}</p>
-    @endif
-</div>
+            @if($errors->any())
+                <p class="error-message">{{ $errors->first('password') }}</p>
+            @endif
+
+            <button type="submit" class="btn">Valider</button>
+        </form>
+
+        <a href="{{ route('home') }}" class="btn-secondary">← Retour à l’accueil</a>
+    </div>
 </body>
 </html>

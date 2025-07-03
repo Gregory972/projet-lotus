@@ -13,10 +13,6 @@
     <div class="edit-buttons-header">
       <h1 class="edit-buttons-title">Éditer les boutons</h1>
       <a href="/" class="edit-buttons-back">← Retour à l'accueil</a>
-      <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button type="submit">Déconnexion</button>
-      </form>
 
     </div>
 
