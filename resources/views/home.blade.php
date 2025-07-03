@@ -35,7 +35,7 @@
       <!-- Colonne Espace personnels -->
       <div>
         <div class="header-blue">Espace personnels</div>
-        <a href="{{ route('admin.buttons.edit') }}" class="no-underline text-inherit">
+        <a href="{{ route('password.form') }}" class="no-underline text-inherit">
           <div class="personnel-box">
             <div class="icon">👤</div>
             <h3 class="bloc-title text-center mb-1">Gestion des personnels</h3>
